@@ -12,6 +12,8 @@ import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonArrayRequest;
+import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
@@ -52,12 +54,13 @@ public class MainActivity extends AppCompatActivity {
             String url = "https://api.api-ninjas.com/v1/city?name=" + city;
             Logger.log("URL:    " + url);
 
-            StringRequest stringRequest = new StringRequest(
+            JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(
                     Request.Method.GET,
                     url,
+                    null,
                     response -> {
-                        Toaster.toast(MainActivity.this, response);
-                        Logger.log(response);
+                        Toaster.toast(MainActivity.this, response.toString());
+                        Logger.log(response.toString());
                     },
                     error -> {
                         Toaster.toast(MainActivity.this, error.toString());
@@ -71,7 +74,7 @@ public class MainActivity extends AppCompatActivity {
                     return headers;
                 }
             };
-            queue.add(stringRequest);
+            queue.add(jsonArrayRequest);
         });
 
 
