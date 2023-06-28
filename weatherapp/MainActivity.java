@@ -62,10 +62,6 @@ public class MainActivity extends AppCompatActivity {
 
         queue = RequestQueueSingleton.getInstance(this);
 
-        //Todo: Both VolleyRequests are of type String, whereas they should be of type JSON. Change this.
-        //Todo: Extract the right data from that JSON and display accordingly.
-        //Todo: Add the last onClickListener for the useCityNameButton.
-
         //TODO: THERE IS A THREAD ISSUE, 100% sure. DEBUG THIS.
 
         getCityLocationBtn.setOnClickListener(getLocationFromCityName);
@@ -162,7 +158,7 @@ public class MainActivity extends AppCompatActivity {
         Logger.log("Just executed getLocationFromCityName");
 
         try {
-            Thread.sleep(3000);
+            Thread.sleep(10000);
         } catch (InterruptedException e) {
             Logger.log("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
             e.printStackTrace();
@@ -171,7 +167,5 @@ public class MainActivity extends AppCompatActivity {
         getWeatherFromLocation.onClick(null);
     };
 
-//    private View.OnClickListener x()
-//    }
 
 }
